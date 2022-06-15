@@ -1,18 +1,21 @@
 import React from "react";
+import {ButtonProps} from "../../../components/global/buttonProps";
+import ClipLoader from "react-spinners/ClipLoader";
 
-interface Props {
-    onClick: (event: React.MouseEvent) => void,
-    children: React.ReactNode,
-    disabled?: boolean,
-    size?: string,
-    variant?: string,
-    type?: string,
-}
+// interface Props {
+//     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
+//     children: React.ReactNode,
+//     disabled?: boolean,
+//     size?: string,
+//     variant?: string,
+//     type?: string,
+// }
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
     children,
     onClick,
-    disabled = true,
+    loading,
+    disabled,
     variant = "default",
     size = 'md',
     type="submit",
@@ -22,10 +25,11 @@ const Button: React.FC<Props> = ({
         <button
             className={`btn ${variant} ${size}` + (disabled ? ' disabled' : '')}
             onClick={onClick}
-            disabled={disabled}
+            disabled={disabled || loading}
             {...rest}
-        >
-            {children}
+            >
+            <ClipLoader color='#fff' loading={loading} size={25} />
+            {!loading && children}
             </button>
     );
   };

@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../../../components/UI/Button/button";
 import Header from "../../../components/UI/Header/header";
-import AuthLayout from '../../../components/Layout/Auth/auth';
 import Input from "../../../components/UI/Input/input";
-import { Eye, EyeCancel } from "../../../components/Eye/eye";
-
+import AuthLayout from '../../../components/Layout/Auth/auth';
 
 interface IData {
     email: string;
-    password: string;
 }
 
-const Login: React.FC = () => {
-    const [password, showPassword] = useState(false);
+
+
+const Forgot: React.FC = () => {
 
     const [data, setData] = useState<IData>({
         email: "",
-        password: "",
-    })
+    });
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // event.preventDefault();
@@ -30,6 +27,7 @@ const Login: React.FC = () => {
         <div className="w-full h-screen bg-[#9874E7] bg-opacity-25 " >
             <Header />
             <div className="w-full max-w-xl mx-auto">
+
                 <AuthLayout>
                     <form className="space-y-6">
                         <Input
@@ -40,21 +38,10 @@ const Login: React.FC = () => {
                             onChange={onChange}
                             name="email"
                         />
-                        <div className="relative">
-                            <Input
-                                label="Password (6 Characters or more)"
-                                placeholder="******"
-                                type={password ? "text" : "password"}
-                                value={data.password}
-                                onChange={onChange}
-                                name="password"
-                            />
-                            <div onClick={() => showPassword(!password)} className="absolute cursor-pointer top-9 right-7">
-                                {password ? <EyeCancel /> : <Eye />}
-                            </div>
-                        </div>
                     </form>
+
                 </AuthLayout>
+
                 <div className="mt-4">
                     <Button
                         onClick={() => alert('Button 1 is clicked !')}
@@ -64,16 +51,15 @@ const Login: React.FC = () => {
                         loading={false}
 
                     >
-                        Login
+                        Forgot Password
                     </Button>
                 </div>
-                <Link to="/forgotpassword"><p className="text-center text-lightpurple text-opacity-40">Forgot Password?</p></Link>
+                <Link to="/login"><p className="text-center text-lightpurple text-opacity-40 cursor-pointer">Login</p></Link>
+
             </div>
         </div>
-
-
 
     )
 }
 
-export default Login;
+export default Forgot;

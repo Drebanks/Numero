@@ -2,27 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-  @apply font-bold py-2 px-4 m-2 rounded;
-}
-.sm {
-  @apply px-2;
+@font-face {
+  font-family: "TT";
+  src: url("../src/assets/font/tt-commons-cufonfonts-1/TT\ Commons\ Regular.otf");
 }
 
-.md {
-  @apply px-4;
+@layer components{
+  .btn {
+    @apply p-4 mb-4 rounded-lg cursor-pointer;
+  }
+  .sm {
+    @apply px-2;
+  }
+  
+  .md {
+    @apply px-4;
+  }
+  
+  .lg {
+    @apply px-8;
+  }
+  
+  .xl {
+    @apply px-16;
+  }
+  .default {
+    @apply bg-purple text-white w-full font-body text-lg;
+  }
+  /* .default:hover {
+    @apply bg-gray text-white w-full;
+  } */
 }
-
-.lg {
-  @apply px-8;
-}
-
-.xl {
-  @apply px-16;
-}
-.default {
-  @apply bg-purple-100 text-green-800;
-}
-.default:hover {
-  @apply bg-gray-200 text-gray-800;
+html {
+  width: 100%;
+  height: 100%;
+  background-color: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(165, 134, 234, 0.099) 88.02%, rgba(152, 116, 231, 0.198) 106.17%);
 }
